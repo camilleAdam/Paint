@@ -68,6 +68,11 @@ public class SChainedShapeList implements Iterable<Shape>{
 
         System.out.println(list.getShapeAtIndex(0));
         System.out.println(list.getShapeAtIndex(1));
+
+
+        for(Shape shape : list){
+
+        }
     }
 
     //get the shape at the x position of the list
@@ -80,6 +85,33 @@ public class SChainedShapeList implements Iterable<Shape>{
 
     @Override
     public Iterator<Shape> iterator() {
-        return null;
+
+        Iterator<Shape> result = new Iterator_CSL(this.start);
+
+        return result;
+    }
+
+    private class Iterator_CSL implements Iterator{
+
+        private ShapeNode current;
+
+        public Iterator_CSL(ShapeNode node){
+            this.current = node;
+        }
+        @Override
+        public boolean hasNext() {
+
+            return this.current != null;
+        }
+
+        @Override
+        public Object next() {
+
+            Shape result;
+            result = this.current.getShape();
+            this.current = this.current.getNext();
+            this.current = next;
+            return result;
+        }
     }
 }
